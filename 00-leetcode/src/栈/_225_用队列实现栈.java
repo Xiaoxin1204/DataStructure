@@ -2,7 +2,6 @@ package 栈;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
 /*
 https://leetcode-cn.com/problems/implement-stack-using-queues/
 使用队列实现栈的下列操作：
@@ -17,6 +16,10 @@ empty() -- 返回栈是否为空
 你可以假设所有操作都是有效的（例如, 对一个空的栈不会调用 pop 或者 top 操作）。
  */
 
+/**
+*@author:xiaoxin on 2020/2/29
+*@description:  双队列实现，创建个变量存储top元素。
+*/
 public class _225_用队列实现栈 {
 
     private Queue<Integer> q1;
