@@ -1,6 +1,6 @@
 package com.xiaoxin.single;
 
-import com.mj.AbstractList;
+import com.xiaoxin.AbstractList;
 
 /**
  * 增加一个虚拟头结点
