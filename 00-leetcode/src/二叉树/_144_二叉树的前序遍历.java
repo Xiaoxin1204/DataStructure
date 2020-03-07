@@ -24,6 +24,8 @@ public class _144_二叉树的前序遍历 {
      */
     public List<Integer> preorderTraversal2(TreeNode root) {
         //todo
+
+
         return null;
     }
 
