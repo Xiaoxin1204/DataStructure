@@ -1,7 +1,9 @@
 package 二叉树;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
@@ -18,17 +20,29 @@ public class _144_二叉树的前序遍历 {
     }
 
 
-
     /**
-     * 迭代
+     * 迭代,性能有点低
      * @param root
      * @return
      */
     public List<Integer> preorderTraversal2(TreeNode root) {
-        //todo
+        LinkedList<Integer> data = new LinkedList<>();
 
+        if (root == null) return data;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root.left);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            data.add(node.val);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
 
-        return null;
+        return data;
     }
 
 

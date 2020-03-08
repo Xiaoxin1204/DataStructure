@@ -1,4 +1,5 @@
 import printer.BinaryTreeInfo;
+import sun.reflect.generics.visitor.Visitor;
 
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -16,8 +17,10 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
     public BinarySearchTree() {
 
     }
+
     /**
      * 查找后继节点
+     *
      * @param node
      * @return
      */
@@ -40,6 +43,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 
     /**
      * 查找前驱节点
+     *
      * @param node
      * @return
      */
@@ -59,8 +63,10 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         return node.parent;
 
     }
+
     /**
      * 判断是否是完全二叉树
+     *
      * @return
      */
     public boolean isComplete() {
@@ -81,7 +87,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 
             if (n.right != null) {
                 queue.offer(n.right);
-            }else {
+            } else {
                 leaf = true;
             }
         }
@@ -150,54 +156,61 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         return ((Node<E>) node).element;
     }
 
-    public static interface Visitor<E> {
-        void visit(E element);
+    public static abstract class Visitor<E> {
+        boolean stop;
+        abstract boolean visit(E element);
     }
 
     public void preOrderTraversal(Visitor<E> visitor) {
+        if (visitor == null) return;
         preOrderTraversal(root, visitor);
     }
 
     private void preOrderTraversal(Node<E> node, Visitor<E> visitor) {
-        if (node == null || visitor == null) return;
-        visitor.visit(node.element);
+        if (node == null || visitor.stop) return;
+        visitor.stop = visitor.visit(node.element);
         preOrderTraversal(node.left, visitor);
         preOrderTraversal(node.right, visitor);
     }
 
     public void inOrderTraversal(Visitor<E> visitor) {
+        if (visitor == null) return;
         inOrderTraversal(root, visitor);
     }
 
     private void inOrderTraversal(Node<E> node, Visitor<E> visitor) {
-        if (node == null || visitor == null) return;
+        if (node == null || visitor.stop) return;
         inOrderTraversal(node.left, visitor);
-        visitor.visit(node.element);
+        if (visitor.stop) return;
+        visitor.stop = visitor.visit(node.element);
         inOrderTraversal(node.right, visitor);
     }
 
     public void postOrderTraversal(Visitor<E> visitor) {
+        if (visitor == null) return;
         postOrderTraversal(root, visitor);
     }
 
     private void postOrderTraversal(Node<E> node, Visitor<E> visitor) {
-        if (node == null || visitor == null) return;
+        if (node == null || visitor.stop) return;
         postOrderTraversal(node.left, visitor);
         postOrderTraversal(node.right, visitor);
-        visitor.visit(node.element);
+        if (visitor.stop) return;
+        visitor.stop = visitor.visit(node.element);
     }
 
     public void levelOrderTraversal(Visitor<E> visitor) {
+        if (visitor == null) return;
         levelOrderTraversal(root, visitor);
     }
 
     private void levelOrderTraversal(Node<E> node, Visitor<E> visitor) {
-        if (node == null || visitor == null) return;
+        if (node == null) return;
         Queue<Node<E>> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             Node<E> n = queue.poll();
-            visitor.visit(n.element);
+            if (visitor.visit(n.element)) return;
             if (n.left != null) {
                 queue.offer(n.left);
             }
