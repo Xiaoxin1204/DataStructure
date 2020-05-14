@@ -44,6 +44,4 @@ public class _144_二叉树的前序遍历 {
 
         return data;
     }
-
-
 }
