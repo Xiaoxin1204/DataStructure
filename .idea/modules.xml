@@ -7,6 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/02-动态数组/02-动态数组.iml" filepath="$PROJECT_DIR$/02-动态数组/02-动态数组.iml" />
       <module fileurl="file://$PROJECT_DIR$/03-链表/03-链表.iml" filepath="$PROJECT_DIR$/03-链表/03-链表.iml" />
       <module fileurl="file://$PROJECT_DIR$/04-二叉搜索树/04-二叉搜索树.iml" filepath="$PROJECT_DIR$/04-二叉搜索树/04-二叉搜索树.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-堆/05-堆.iml" filepath="$PROJECT_DIR$/05-堆/05-堆.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-排序算法/06-排序算法.iml" filepath="$PROJECT_DIR$/06-排序算法/06-排序算法.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-算法练习/07-算法练习.iml" filepath="$PROJECT_DIR$/07-算法练习/07-算法练习.iml" />
+      <module fileurl="file://$PROJECT_DIR$/笔试/笔试.iml" filepath="$PROJECT_DIR$/笔试/笔试.iml" />
     </modules>
   </component>
 </project>
